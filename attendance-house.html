@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Representatives Attendance</title>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th>Party</th>
+                    <th>N° of Reps</th>
+                    <th>Missed Votes %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Republican</td>
+                    <td>{{this.republicans.length}}</td>
+                    <td>{{this.averageMissedVotesRepublicans}}</td>
+                </tr>
+                <tr>
+                    <td>Democratic</td>
+                    <td>{{this.democrats.length}}</td>
+                    <td>{{this.averageMissedVotesDemocrats}}</td>
+                </tr>
+                <tr>
+                    <td>Independent</td>
+                    <td>{{this.independents.length}}</td>
+                    <td>{{this.averageMissedVotesIndependents}}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>{{this.members.length}}</td>
+                    <td>{{this.averageMissedVotesTotal}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>N° of Missed Votes</th>
+                    <th>Missed Votes %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="member in this.leastEngaged">
+                    <td><a href="{{member.url}}">{{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
+                    <td>{{member.missed_votes}}</td>
+                    <td>{{member.missed_votes_pct}}%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>N° of Missed Votes</th>
+                    <th>Missed Votes %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="member in this.mostEngaged">
+                    <td><a href="{{member.url}}">{{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
+                    <td>{{member.missed_votes}}</td>
+                    <td>{{member.missed_votes_pct}}%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./statistics.js"></script>
+</body>
+</html>

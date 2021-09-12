@@ -157,24 +157,24 @@
               <div class="row">
                 <div class="col-2">
                   <label for="checkboxRepublican">
-                    <input type="checkbox" id="checkboxRepublican" value="R" />
+                    <input type="checkbox" id="checkboxRepublican" value="R" v-on:change="partyFilter" />
                     Republican
                   </label>
                 </div>
                 <div class="col-2">
                   <label for="checkboxDemocratic">
-                    <input type="checkbox" id="checkboxDemocratic" value="D" />
+                    <input type="checkbox" id="checkboxDemocratic" value="D" v-on:change="partyFilter" />
                     Democratic
                   </label>
                 </div>
                 <div class="col-2">
                   <label for="checkboxIndependent">
-                    <input type="checkbox" id="checkboxIndependent" value="ID" />
+                    <input type="checkbox" id="checkboxIndependent" value="ID" v-on:change="partyFilter" />
                     Independent
                   </label>
                 </div>
                 <div class="col d-flex justify-content-end">
-                  <select name="state" id="stateSelect">
+                  <select name="state" id="stateSelect" v-on:change="stateFilter">
                     <option value="">All States</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -244,7 +244,7 @@
                             <th>Vote with Party %</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table-data">
                         <tr v-for="member in members">
                             <td><a href={{member.url}}>{{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
                             <td>{{member.party}}</td>
@@ -254,6 +254,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center w100%">
+                  <img src="./assets/ajax-loader.gif" class="ajax-loader" />
+                </div>
               </div>
             </div>
           </div>
@@ -271,7 +274,6 @@
     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
     crossorigin="anonymous"
     ></script>
-    <script src="./data/senate.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>
