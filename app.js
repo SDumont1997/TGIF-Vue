@@ -1,8 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
-      members: [],
-      ajaxLoader: document.getElementsByClassName("ajax-loader"),
+      members: []
     };
   },
   created() {
@@ -27,7 +26,6 @@ const app = Vue.createApp({
       })
       .then((data) => {
         this.members = [...data.results[0].members];
-        this.ajaxLoader[0].hidden = true;
       })
       .catch((error) => {
         console.log(error.message);

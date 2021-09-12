@@ -130,7 +130,7 @@
                 </div>
                 <div class="col-5 d-flex flex-column align-items-end p-2">
                     <h2 class="mb-3">House at a glance</h2>
-                    <table class="table table-hover">
+                    <table class="table table-hover" v-if="members.length !== 0">
                         <thead>
                             <tr>
                                 <th>Party</th>
@@ -162,7 +162,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center align-self-center w100%">
-                      <img src="./assets/ajax-loader.gif" class="ajax-loader">
+                      <img src="./assets/ajax-loader.gif" class="ajax-loader" v-if="members.length === 0">
                     </div>   
                 </div>
             </div>
@@ -171,8 +171,8 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-6 p-2 table-responsive">
-                    <table class="table table-hover">
-                        <h2 class="mb-2">Least Loyal (Bottom 10%)</h2>
+                  <h2 class="mb-2">Least Loyal (Bottom 10%)</h2>
+                    <table class="table table-hover" v-if="members.length !== 0">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -189,12 +189,12 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center w100%">
-                      <img src="./assets/ajax-loader.gif" class="ajax-loader">
+                      <img src="./assets/ajax-loader.gif" class="ajax-loader" v-if="members.length === 0">
                     </div>  
                 </div>
                 <div class="col-6 p-2 table-responsive">
-                    <table class="table table-hover">
-                        <h2 class="mb-2">Most Loyal (Top 10%)</h2>
+                  <h2 class="mb-2">Most Loyal (Top 10%)</h2>
+                    <table class="table table-hover" v-if="members.length !== 0">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -211,7 +211,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center w100%">
-                      <img src="./assets/ajax-loader.gif" class="ajax-loader">
+                      <img src="./assets/ajax-loader.gif" class="ajax-loader" v-if="members.length === 0">
                     </div>  
                 </div>
             </div>

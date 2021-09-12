@@ -21,7 +21,7 @@ const app = Vue.createApp({
         mostLoyal: [],
         leastLoyal: [],
         mostEngaged: [],
-        leastEngaged: []
+        leastEngaged: [],
       }
     };
   },
