@@ -1,7 +1,9 @@
 const app = Vue.createApp({
   data() {
     return {
-      members: []
+      members: [],
+      parties: [],
+      state: ""
     };
   },
   created() {
@@ -34,6 +36,27 @@ const app = Vue.createApp({
   methods: {
     
   },
+  computed: {
+    filteredMembers(){
+      let auxArray = []
+      if(this.parties.length === 0 && this.state === ""){
+        auxArray = [...this.members]
+        return auxArray
+      }
+      if(this.parties.length !== 0 && this.state === ""){
+        auxArray = this.members.filter(member => this.parties.includes(member.party))
+        return auxArray
+      }
+      if(this.parties.length === 0 && this.state !== ""){
+        auxArray = this.members.filter(member => member.state === this.state)
+        return auxArray
+      }
+      if(this.parties.length !== 0 && this.state !== ""){
+        auxArray = this.members.filter(member => this.parties.includes(member.party) && member.state === this.state)
+        return auxArray
+      } 
+    }
+  }
 });
 
-app.mount("#app");
+let asd = app.mount("#app");

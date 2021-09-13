@@ -63,7 +63,6 @@ td{
 }
 
 #empty_table_placeholder{
-    display: none;
     width: 100%;
     text-align: center;
 }

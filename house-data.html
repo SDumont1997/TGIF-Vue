@@ -159,24 +159,25 @@
   <div class="row">
     <div class="col-2">
       <label for="checkboxRepublican">
-        <input type="checkbox" id="checkboxRepublican" value="R" />
+        <input v-model ="parties" type="checkbox"  id="checkboxRepublican" name="parties" value="R" />
         Republican
       </label>
     </div>
     <div class="col-2">
       <label for="checkboxDemocratic">
-        <input type="checkbox" id="checkboxDemocratic" value="D" />
+        <input v-model="parties" type="checkbox" id="checkboxDemocratic" name="parties" value="D" />
         Democratic
       </label>
     </div>
     <div class="col-2">
-      <label for="checkboxIndependant">
-        <input type="checkbox" id="checkboxIndependant" value="ID" />
-        Independant
+      <label for="checkboxIndependent">
+        <input v-model="parties" type="checkbox" id="checkboxIndependent" name="parties" value="ID" />
+        Independent
       </label>
     </div>
+    
     <div class="col d-flex justify-content-end">
-      <select name="state" id="stateSelect">
+      <select v-model="state" name="state" id="stateSelect">
         <option value="">All States</option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
@@ -232,22 +233,20 @@
     </div>
   </div>
 </div>
-
 <div class="container" id="dataTableHouse">
-  <h2 id="empty_table_placeholder">No results found</h2>
   <div class="table-responsive">
-    <table class="table table-hover" id="data">
+    <table class="table table-hover" id="data" v-if="filteredMembers.length !== 0 || members.length === 0">
       <thead>
         <tr>
           <th>Full Name</th>
-                <th>Party</th>
-                <th>State</th>
-                <th>Seniority</th>
-                <th>Vote with Party %</th>
-            </tr>
-        </thead>
+          <th>Party</th>
+          <th>State</th>
+          <th>Seniority</th>
+          <th>Vote with Party %</th>
+        </tr>
+      </thead>
         <tbody id="table-data">
-            <tr v-for="member in members">
+            <tr v-for="member in filteredMembers">
                 <td><a href={{member.url}}>{{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
                 <td>{{member.party}}</td>
                 <td>{{member.state}}</td>
@@ -257,8 +256,9 @@
         </tbody>
         </table>
         <div class="d-flex justify-content-center w100%">
-          <img src="./assets/ajax-loader.gif" class="ajax-loader" />
+          <img src="./assets/ajax-loader.gif" class="ajax-loader" v-if="members.length === 0" />
         </div>
+        <h2 id="empty_table_placeholder" v-if="members.length !== 0 && filteredMembers.length === 0">No results found</h2>
       </div>
     </div>
 
